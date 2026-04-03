@@ -4,15 +4,15 @@ $(document).ready(function() {
     //$(".grid-cell-wrapper").click(gameLoop());
 });
 
-$(window).resize(function() {
+$(window).resize(function(measurement) {
   $("#gameArea").height($("#gameArea").width());
   $("#gameArea").width(Math.round($("#gameArea").height()));
-  $(".grid-cell-wrapper").width($("#gameArea").width()/3);
+  $(".grid-cell-wrapper").width($("#gameArea").width()/measurement);
   $(".grid-cell-wrapper").height($(".grid-cell").eq(0).outerWidth());
 });
 
 function init(crossImg, zeroImg, gridImg) {
-  $("#gameArea").css("background-image", "url(" + gridImg + ")");
+  //$("#gameArea").css("background-image", "url(" + gridImg + ")");
   $(".grid-cell_cross").css("background-image", "url(" + crossImg + ")");
   $(".grid-cell_zero").css("background-image", "url(" + zeroImg + ")");
 }
@@ -34,7 +34,7 @@ function startGame(restart) {
 
 function chooseSide() {
   let gameSide;
-  let measurement = 20; // измерение(по горизонтали и вертикали), так как строится квадрат
+  var measurement = 20; // измерение(по горизонтали и вертикали), так как строится квадрат (3)
   $("#0").click(function() {
     gameSide = 2; // комп играет ноликами
     let gameArea = createGameArea(measurement);
@@ -70,7 +70,7 @@ function createGameArea(measurement) {
       id: i,
       class: "grid-cell-wrapper"
     });
-    gridCellWrapper.width(grid.width()/3);
+    gridCellWrapper.width(grid.width()/measurement);
     gridCellWrapper.height(gridCellWrapper.width());
     gridCellWrapper.append("<div class='grid-cell grid-cell_free'></div>");
     grid.append(gridCellWrapper);
@@ -103,7 +103,7 @@ function gameLoop(gameSide, gameArea) {
   let winner;
   let coordsArrayOfWinner;
   let measurement = gameArea.data("data-measurement");
-  let cellsToCapture = 5;
+  let cellsToCapture = 5; //3
   let cells = $(".grid-cell");
   let matrixArea = []; // двумерный массив игрового поля
   for (let i=0; i<measurement; i++) {
@@ -315,7 +315,7 @@ function gameLoop(gameSide, gameArea) {
       }
     }
     // определить, имеет ли смысл продолжение игры(не возникла ли ничейная позиция)
-    let comboLength = 0;
+    /*let comboLength = 0;
     let comboStatus = true;
     let draw = true;
     if (winner==undefined) {
@@ -363,7 +363,7 @@ function gameLoop(gameSide, gameArea) {
     }
     if (draw && winner==undefined) {
       winner = 0;
-    }
+    }*/
     console.log("длина комбинации победителя: ", winningComboPower);
     console.log("координаты клеток выигрышной комбинации: ", coordsArrayOfWinner);
     console.log("победитель: ", winner);

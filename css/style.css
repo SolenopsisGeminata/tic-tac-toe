@@ -71,7 +71,6 @@ button {
 
 .control-panel_choose-side {
   padding: 2rem;
-  font-size:
 }
 
 .control-panel_choose-side button {
@@ -90,12 +89,13 @@ button {
   width: 50vh;
   display: flex;
   flex-wrap: wrap;
-  background: url("../img/grid.png") no-repeat;
+  /*background: url("../img/grid.png") no-repeat;*/
   background-size: contain;
 }
 
 .grid-cell-wrapper {
-  padding: 1rem;
+  /*padding: 1rem;*/
+  border: 3px solid blue;
   box-sizing: border-box;
 }
 
