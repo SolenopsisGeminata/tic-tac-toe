@@ -34,7 +34,7 @@ function startGame(restart) {
 
 function chooseSide() {
   let gameSide;
-  let measurement = 3; // измерение(по горизонтали и вертикали), так как строится квадрат
+  let measurement = 20; // измерение(по горизонтали и вертикали), так как строится квадрат
   $("#0").click(function() {
     gameSide = 2; // комп играет ноликами
     let gameArea = createGameArea(measurement);
@@ -103,7 +103,7 @@ function gameLoop(gameSide, gameArea) {
   let winner;
   let coordsArrayOfWinner;
   let measurement = gameArea.data("data-measurement");
-  let cellsToCapture = 3;
+  let cellsToCapture = 5;
   let cells = $(".grid-cell");
   let matrixArea = []; // двумерный массив игрового поля
   for (let i=0; i<measurement; i++) {
